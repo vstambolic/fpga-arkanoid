@@ -1,0 +1,505 @@
+|Slave_FPGA
+HEX1_D0 <= seven_segment_digit_interface:inst52.a
+pointplayer2 => score2:inst4.pointplayer2
+game_over1 => score2:inst4.game_over1
+game_over2 => score2:inst4.game_over2
+new_game => score2:inst4.new_game
+CLK => score2:inst4.clk
+HEX1_D1 <= seven_segment_digit_interface:inst52.b
+HEX1_D2 <= seven_segment_digit_interface:inst52.c
+HEX1_D3 <= seven_segment_digit_interface:inst52.d
+HEX1_D4 <= seven_segment_digit_interface:inst52.e
+HEX1_D5 <= seven_segment_digit_interface:inst52.f
+HEX1_D6 <= seven_segment_digit_interface:inst52.g
+HEX0_D0 <= seven_segment_digit_interface:inst51.a
+HEX0_D1 <= seven_segment_digit_interface:inst51.b
+HEX0_D2 <= seven_segment_digit_interface:inst51.c
+HEX0_D3 <= seven_segment_digit_interface:inst51.d
+HEX0_D4 <= seven_segment_digit_interface:inst51.e
+HEX0_D5 <= seven_segment_digit_interface:inst51.f
+HEX0_D6 <= seven_segment_digit_interface:inst51.g
+
+
+|Slave_FPGA|seven_segment_digit_interface:inst52
+x3 => Mux0.IN33
+x3 => Mux1.IN33
+x3 => Mux2.IN33
+x3 => Mux3.IN33
+x3 => Mux4.IN33
+x3 => Mux5.IN33
+x3 => Mux6.IN33
+x2 => Mux0.IN34
+x2 => Mux1.IN34
+x2 => Mux2.IN34
+x2 => Mux3.IN34
+x2 => Mux4.IN34
+x2 => Mux5.IN34
+x2 => Mux6.IN34
+x1 => Mux0.IN35
+x1 => Mux1.IN35
+x1 => Mux2.IN35
+x1 => Mux3.IN35
+x1 => Mux4.IN35
+x1 => Mux5.IN35
+x1 => Mux6.IN35
+x0 => Mux0.IN36
+x0 => Mux1.IN36
+x0 => Mux2.IN36
+x0 => Mux3.IN36
+x0 => Mux4.IN36
+x0 => Mux5.IN36
+x0 => Mux6.IN36
+dot => dp.IN0
+en => Mux0.IN32
+en => Mux1.IN32
+en => Mux2.IN32
+en => Mux3.IN32
+en => Mux4.IN32
+en => Mux5.IN32
+en => Mux6.IN32
+en => dp.IN1
+a <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+b <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+c <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+d <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+e <= Mux4.DB_MAX_OUTPUT_PORT_TYPE
+f <= Mux5.DB_MAX_OUTPUT_PORT_TYPE
+g <= Mux6.DB_MAX_OUTPUT_PORT_TYPE
+dp <= dp.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Slave_FPGA|Binary2BCD:inst50
+binary_input[0] => Mult0.IN18
+binary_input[0] => bcd_units[0].DATAIN
+binary_input[1] => Mult0.IN17
+binary_input[1] => Add1.IN14
+binary_input[2] => Mult0.IN16
+binary_input[2] => Add1.IN13
+binary_input[3] => Mult0.IN15
+binary_input[3] => Add1.IN12
+binary_input[4] => Mult0.IN14
+binary_input[4] => Add1.IN11
+binary_input[5] => Mult0.IN13
+binary_input[5] => Add1.IN10
+binary_input[6] => Mult0.IN12
+binary_input[6] => Add1.IN9
+bcd_units[0] <= binary_input[0].DB_MAX_OUTPUT_PORT_TYPE
+bcd_units[1] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+bcd_units[2] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+bcd_units[3] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
+bcd_tens[0] <= Mult0.DB_MAX_OUTPUT_PORT_TYPE
+bcd_tens[1] <= Mult0.DB_MAX_OUTPUT_PORT_TYPE
+bcd_tens[2] <= Mult0.DB_MAX_OUTPUT_PORT_TYPE
+bcd_tens[3] <= Mult0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Slave_FPGA|score2:inst4
+score2[0] <= MP2X:inst10.Y[0]
+score2[1] <= MP2X:inst10.Y[1]
+score2[2] <= MP2X:inst10.Y[2]
+score2[3] <= MP2X:inst10.Y[3]
+score2[4] <= MP2X:inst10.Y[4]
+score2[5] <= MP2X:inst10.Y[5]
+score2[6] <= MP2X:inst10.Y[6]
+new_game => MP2X:inst10.S
+new_game => inst9.IN0
+clk => REGX:inst1.clk
+clk => RisingEdge:inst12.CLK
+clk => REGX:inst3.clk
+clk => RisingEdge:inst11.CLK
+game_over2 => RisingEdge:inst12.IN
+pointplayer2 => REGX:inst1.inc
+game_over1 => RisingEdge:inst11.IN
+
+
+|Slave_FPGA|score2:inst4|MP2X:inst10
+X0[0] => Y.DATAB
+X0[1] => Y.DATAB
+X0[2] => Y.DATAB
+X0[3] => Y.DATAB
+X0[4] => Y.DATAB
+X0[5] => Y.DATAB
+X0[6] => Y.DATAB
+X1[0] => Y.DATAA
+X1[1] => Y.DATAA
+X1[2] => Y.DATAA
+X1[3] => Y.DATAA
+X1[4] => Y.DATAA
+X1[5] => Y.DATAA
+X1[6] => Y.DATAA
+S => Y.OUTPUTSELECT
+S => Y.OUTPUTSELECT
+S => Y.OUTPUTSELECT
+S => Y.OUTPUTSELECT
+S => Y.OUTPUTSELECT
+S => Y.OUTPUTSELECT
+S => Y.OUTPUTSELECT
+Y[0] <= Y.DB_MAX_OUTPUT_PORT_TYPE
+Y[1] <= Y.DB_MAX_OUTPUT_PORT_TYPE
+Y[2] <= Y.DB_MAX_OUTPUT_PORT_TYPE
+Y[3] <= Y.DB_MAX_OUTPUT_PORT_TYPE
+Y[4] <= Y.DB_MAX_OUTPUT_PORT_TYPE
+Y[5] <= Y.DB_MAX_OUTPUT_PORT_TYPE
+Y[6] <= Y.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Slave_FPGA|score2:inst4|REGX:inst1
+clk => data[0].CLK
+clk => data[1].CLK
+clk => data[2].CLK
+clk => data[3].CLK
+clk => data[4].CLK
+clk => data[5].CLK
+clk => data[6].CLK
+ld => data_next.OUTPUTSELECT
+ld => data_next.OUTPUTSELECT
+ld => data_next.OUTPUTSELECT
+ld => data_next.OUTPUTSELECT
+ld => data_next.OUTPUTSELECT
+ld => data_next.OUTPUTSELECT
+ld => data_next.OUTPUTSELECT
+cl => data_next[6].OUTPUTSELECT
+cl => data_next[5].OUTPUTSELECT
+cl => data_next[4].OUTPUTSELECT
+cl => data_next[3].OUTPUTSELECT
+cl => data_next[2].OUTPUTSELECT
+cl => data_next[1].OUTPUTSELECT
+cl => data_next[0].OUTPUTSELECT
+inc => data_next.OUTPUTSELECT
+inc => data_next.OUTPUTSELECT
+inc => data_next.OUTPUTSELECT
+inc => data_next.OUTPUTSELECT
+inc => data_next.OUTPUTSELECT
+inc => data_next.OUTPUTSELECT
+inc => data_next.OUTPUTSELECT
+dec => data_next.OUTPUTSELECT
+dec => data_next.OUTPUTSELECT
+dec => data_next.OUTPUTSELECT
+dec => data_next.OUTPUTSELECT
+dec => data_next.OUTPUTSELECT
+dec => data_next.OUTPUTSELECT
+dec => data_next.OUTPUTSELECT
+data_in[0] => data_next.DATAB
+data_in[1] => data_next.DATAB
+data_in[2] => data_next.DATAB
+data_in[3] => data_next.DATAB
+data_in[4] => data_next.DATAB
+data_in[5] => data_next.DATAB
+data_in[6] => data_next.DATAB
+data_out[0] <= data[0].DB_MAX_OUTPUT_PORT_TYPE
+data_out[1] <= data[1].DB_MAX_OUTPUT_PORT_TYPE
+data_out[2] <= data[2].DB_MAX_OUTPUT_PORT_TYPE
+data_out[3] <= data[3].DB_MAX_OUTPUT_PORT_TYPE
+data_out[4] <= data[4].DB_MAX_OUTPUT_PORT_TYPE
+data_out[5] <= data[5].DB_MAX_OUTPUT_PORT_TYPE
+data_out[6] <= data[6].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Slave_FPGA|score2:inst4|RisingEdge:inst12
+OUT <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst.CLK
+CLK => inst1.CLK
+IN => inst.DATAIN
+
+
+|Slave_FPGA|score2:inst4|REGX:inst3
+clk => data[0].CLK
+clk => data[1].CLK
+clk => data[2].CLK
+clk => data[3].CLK
+clk => data[4].CLK
+clk => data[5].CLK
+clk => data[6].CLK
+ld => data_next.OUTPUTSELECT
+ld => data_next.OUTPUTSELECT
+ld => data_next.OUTPUTSELECT
+ld => data_next.OUTPUTSELECT
+ld => data_next.OUTPUTSELECT
+ld => data_next.OUTPUTSELECT
+ld => data_next.OUTPUTSELECT
+cl => data_next[6].OUTPUTSELECT
+cl => data_next[5].OUTPUTSELECT
+cl => data_next[4].OUTPUTSELECT
+cl => data_next[3].OUTPUTSELECT
+cl => data_next[2].OUTPUTSELECT
+cl => data_next[1].OUTPUTSELECT
+cl => data_next[0].OUTPUTSELECT
+inc => data_next.OUTPUTSELECT
+inc => data_next.OUTPUTSELECT
+inc => data_next.OUTPUTSELECT
+inc => data_next.OUTPUTSELECT
+inc => data_next.OUTPUTSELECT
+inc => data_next.OUTPUTSELECT
+inc => data_next.OUTPUTSELECT
+dec => data_next.OUTPUTSELECT
+dec => data_next.OUTPUTSELECT
+dec => data_next.OUTPUTSELECT
+dec => data_next.OUTPUTSELECT
+dec => data_next.OUTPUTSELECT
+dec => data_next.OUTPUTSELECT
+dec => data_next.OUTPUTSELECT
+data_in[0] => data_next.DATAB
+data_in[1] => data_next.DATAB
+data_in[2] => data_next.DATAB
+data_in[3] => data_next.DATAB
+data_in[4] => data_next.DATAB
+data_in[5] => data_next.DATAB
+data_in[6] => data_next.DATAB
+data_out[0] <= data[0].DB_MAX_OUTPUT_PORT_TYPE
+data_out[1] <= data[1].DB_MAX_OUTPUT_PORT_TYPE
+data_out[2] <= data[2].DB_MAX_OUTPUT_PORT_TYPE
+data_out[3] <= data[3].DB_MAX_OUTPUT_PORT_TYPE
+data_out[4] <= data[4].DB_MAX_OUTPUT_PORT_TYPE
+data_out[5] <= data[5].DB_MAX_OUTPUT_PORT_TYPE
+data_out[6] <= data[6].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Slave_FPGA|score2:inst4|RisingEdge:inst11
+OUT <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+CLK => inst.CLK
+CLK => inst1.CLK
+IN => inst.DATAIN
+
+
+|Slave_FPGA|score2:inst4|ADD7:inst6
+F[0] <= RESX[0].DB_MAX_OUTPUT_PORT_TYPE
+F[1] <= RESX[1].DB_MAX_OUTPUT_PORT_TYPE
+F[2] <= RESX[2].DB_MAX_OUTPUT_PORT_TYPE
+F[3] <= RESX[3].DB_MAX_OUTPUT_PORT_TYPE
+F[4] <= RESX[4].DB_MAX_OUTPUT_PORT_TYPE
+F[5] <= RESY[0].DB_MAX_OUTPUT_PORT_TYPE
+F[6] <= RESY[1].DB_MAX_OUTPUT_PORT_TYPE
+A[0] => ADD5:inst.a[0]
+A[1] => ADD5:inst.a[1]
+A[2] => ADD5:inst.a[2]
+A[3] => ADD5:inst.a[3]
+A[4] => ADD5:inst.a[4]
+A[5] => ADD5:inst1.a[0]
+A[6] => ADD5:inst1.a[1]
+B[0] => ADD5:inst.b[0]
+B[1] => ADD5:inst.b[1]
+B[2] => ADD5:inst.b[2]
+B[3] => ADD5:inst.b[3]
+B[4] => ADD5:inst.b[4]
+B[5] => ADD5:inst1.b[0]
+B[6] => ADD5:inst1.b[1]
+
+
+|Slave_FPGA|score2:inst4|ADD7:inst6|ADD5:inst1
+a[0] => add1:add10.a
+a[1] => add1:add11.a
+a[2] => add1:add12.a
+a[3] => add1:add13.a
+a[4] => add1:add14.a
+b[0] => add1:add10.b
+b[1] => add1:add11.b
+b[2] => add1:add12.b
+b[3] => add1:add13.b
+b[4] => add1:add14.b
+c0 => add1:add10.cin
+f[0] <= add1:add10.f
+f[1] <= add1:add11.f
+f[2] <= add1:add12.f
+f[3] <= add1:add13.f
+f[4] <= add1:add14.f
+c5 <= add1:add14.cout
+
+
+|Slave_FPGA|score2:inst4|ADD7:inst6|ADD5:inst1|ADD1:add10
+a => f.IN0
+a => cout.IN0
+a => cout.IN0
+b => f.IN1
+b => cout.IN1
+b => cout.IN1
+cin => f.IN1
+cin => cout.IN1
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Slave_FPGA|score2:inst4|ADD7:inst6|ADD5:inst1|ADD1:add11
+a => f.IN0
+a => cout.IN0
+a => cout.IN0
+b => f.IN1
+b => cout.IN1
+b => cout.IN1
+cin => f.IN1
+cin => cout.IN1
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Slave_FPGA|score2:inst4|ADD7:inst6|ADD5:inst1|ADD1:add12
+a => f.IN0
+a => cout.IN0
+a => cout.IN0
+b => f.IN1
+b => cout.IN1
+b => cout.IN1
+cin => f.IN1
+cin => cout.IN1
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Slave_FPGA|score2:inst4|ADD7:inst6|ADD5:inst1|ADD1:add13
+a => f.IN0
+a => cout.IN0
+a => cout.IN0
+b => f.IN1
+b => cout.IN1
+b => cout.IN1
+cin => f.IN1
+cin => cout.IN1
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Slave_FPGA|score2:inst4|ADD7:inst6|ADD5:inst1|ADD1:add14
+a => f.IN0
+a => cout.IN0
+a => cout.IN0
+b => f.IN1
+b => cout.IN1
+b => cout.IN1
+cin => f.IN1
+cin => cout.IN1
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Slave_FPGA|score2:inst4|ADD7:inst6|ADD5:inst
+a[0] => add1:add10.a
+a[1] => add1:add11.a
+a[2] => add1:add12.a
+a[3] => add1:add13.a
+a[4] => add1:add14.a
+b[0] => add1:add10.b
+b[1] => add1:add11.b
+b[2] => add1:add12.b
+b[3] => add1:add13.b
+b[4] => add1:add14.b
+c0 => add1:add10.cin
+f[0] <= add1:add10.f
+f[1] <= add1:add11.f
+f[2] <= add1:add12.f
+f[3] <= add1:add13.f
+f[4] <= add1:add14.f
+c5 <= add1:add14.cout
+
+
+|Slave_FPGA|score2:inst4|ADD7:inst6|ADD5:inst|ADD1:add10
+a => f.IN0
+a => cout.IN0
+a => cout.IN0
+b => f.IN1
+b => cout.IN1
+b => cout.IN1
+cin => f.IN1
+cin => cout.IN1
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Slave_FPGA|score2:inst4|ADD7:inst6|ADD5:inst|ADD1:add11
+a => f.IN0
+a => cout.IN0
+a => cout.IN0
+b => f.IN1
+b => cout.IN1
+b => cout.IN1
+cin => f.IN1
+cin => cout.IN1
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Slave_FPGA|score2:inst4|ADD7:inst6|ADD5:inst|ADD1:add12
+a => f.IN0
+a => cout.IN0
+a => cout.IN0
+b => f.IN1
+b => cout.IN1
+b => cout.IN1
+cin => f.IN1
+cin => cout.IN1
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Slave_FPGA|score2:inst4|ADD7:inst6|ADD5:inst|ADD1:add13
+a => f.IN0
+a => cout.IN0
+a => cout.IN0
+b => f.IN1
+b => cout.IN1
+b => cout.IN1
+cin => f.IN1
+cin => cout.IN1
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Slave_FPGA|score2:inst4|ADD7:inst6|ADD5:inst|ADD1:add14
+a => f.IN0
+a => cout.IN0
+a => cout.IN0
+b => f.IN1
+b => cout.IN1
+b => cout.IN1
+cin => f.IN1
+cin => cout.IN1
+f <= f.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Slave_FPGA|seven_segment_digit_interface:inst51
+x3 => Mux0.IN33
+x3 => Mux1.IN33
+x3 => Mux2.IN33
+x3 => Mux3.IN33
+x3 => Mux4.IN33
+x3 => Mux5.IN33
+x3 => Mux6.IN33
+x2 => Mux0.IN34
+x2 => Mux1.IN34
+x2 => Mux2.IN34
+x2 => Mux3.IN34
+x2 => Mux4.IN34
+x2 => Mux5.IN34
+x2 => Mux6.IN34
+x1 => Mux0.IN35
+x1 => Mux1.IN35
+x1 => Mux2.IN35
+x1 => Mux3.IN35
+x1 => Mux4.IN35
+x1 => Mux5.IN35
+x1 => Mux6.IN35
+x0 => Mux0.IN36
+x0 => Mux1.IN36
+x0 => Mux2.IN36
+x0 => Mux3.IN36
+x0 => Mux4.IN36
+x0 => Mux5.IN36
+x0 => Mux6.IN36
+dot => dp.IN0
+en => Mux0.IN32
+en => Mux1.IN32
+en => Mux2.IN32
+en => Mux3.IN32
+en => Mux4.IN32
+en => Mux5.IN32
+en => Mux6.IN32
+en => dp.IN1
+a <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+b <= Mux1.DB_MAX_OUTPUT_PORT_TYPE
+c <= Mux2.DB_MAX_OUTPUT_PORT_TYPE
+d <= Mux3.DB_MAX_OUTPUT_PORT_TYPE
+e <= Mux4.DB_MAX_OUTPUT_PORT_TYPE
+f <= Mux5.DB_MAX_OUTPUT_PORT_TYPE
+g <= Mux6.DB_MAX_OUTPUT_PORT_TYPE
+dp <= dp.DB_MAX_OUTPUT_PORT_TYPE
+
+
